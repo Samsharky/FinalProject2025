@@ -1,0 +1,236 @@
+:root{
+  /* Light-blue glassy palette */
+  --bg: #f3fbff;
+  --text: #08304a;
+  --muted: #4f6b7a;
+  --accent: #69c3ff;
+  --card: rgba(255,255,255,0.6);
+}
+
+[data-theme="dark"]{
+  --bg: #06121a;
+  --text: #dbeffb;
+  --muted: #93b6c8;
+  --accent: #6fc8ff;
+  --card: rgba(7,16,35,0.45);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg,var(--bg),#eaf9ff 60%);
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+.site-header{position:sticky;top:0;background:transparent;padding:8px 0;z-index:40}
+.nav{display:flex;align-items:center;justify-content:space-between;max-width:1000px;margin:0 auto;padding:0 16px}
+.logo{font-weight:700;text-decoration:none;color:var(--text)}
+.nav-links{list-style:none;margin:0;padding:0;display:flex;gap:12px}
+.nav-links a{text-decoration:none;color:var(--muted)}
+
+.theme-toggle{background:transparent;border:1px solid rgba(0,0,0,0.04);font-size:18px;padding:6px;border-radius:8px;cursor:pointer}
+
+.hero{padding:80px 16px 60px;text-align:center;background:linear-gradient(180deg, rgba(105,195,255,0.06), transparent)}
+.hero-inner{max-width:900px;margin:0 auto}
+.hero .name{color:var(--accent)}
+.lead{color:var(--muted);margin-top:8px}
+.btn{display:inline-block;background:var(--accent);color:white;padding:10px 16px;border-radius:10px;text-decoration:none;box-shadow:0 6px 18px rgba(105,195,255,0.18);transition:transform .18s cubic-bezier(.2,.9,.3,1), box-shadow .18s, filter .18s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(30,144,255,0.14);filter:brightness(1.03)}
+.btn:active{transform:translateY(-2px) scale(.995)}
+.btn:focus-visible{outline:3px solid rgba(105,195,255,0.28);outline-offset:4px}
+
+.btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent);margin-left:8px;transition:background .18s, color .18s, transform .18s}
+.btn-outline:hover{background:rgba(105,195,255,0.06);transform:translateY(-3px)}
+
+/* Navigation and header hover */
+.nav-links a{padding:6px 8px;border-radius:8px;transition:background .16s,color .16s,transform .12s}
+.nav-links a:hover{background:rgba(105,195,255,0.06);color:var(--text);transform:translateY(-2px)}
+.theme-toggle{transition:transform .12s,box-shadow .12s}
+.theme-toggle:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(34,80,120,0.08)}
+
+/* Project card hover */
+.card{background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px;border-radius:14px;box-shadow:0 6px 20px rgba(10,30,50,0.06);border:1px solid rgba(255,255,255,0.4);transition:transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgba(10,40,80,0.12);border-color:rgba(111,200,255,0.22)}
+.card:active{transform:translateY(-4px)}
+.card h3{transition:color .14s}
+.card:hover h3{color:var(--accent)}
+
+/* Make small links more interactive */
+.small-link{transition:transform .12s,color .12s}
+.small-link:hover{transform:translateX(4px);color:var(--accent)}
+
+.section{padding:48px 16px;position:relative}
+.container{max-width:1000px;margin:0 auto}
+.projects .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px;border-radius:14px;box-shadow:0 6px 20px rgba(10,30,50,0.06);border:1px solid rgba(255,255,255,0.4)}
+.small-link{color:var(--accent);text-decoration:none}
+
+.contact-form{display:grid;gap:10px;max-width:520px}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(10,30,50,0.06);background:transparent;color:var(--text)}
+
+.site-footer{border-top:1px solid rgba(10,30,50,0.06);padding:18px 16px;margin-top:32px}
+
+@media (max-width:640px){
+  .nav-links{display:none}
+  .hero{padding:60px 12px}
+}
+
+/* Gallery / Tree styles */
+.gallery .tree-wrap{position:relative;max-width:640px;margin:18px auto;padding:24px}
+.tree{position:relative;width:320px;height:420px;margin:0 auto}
+.tree svg{width:100%;height:auto;display:block}
+.ornament{position:absolute;width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,0.8);background:var(--accent);transform:translate(-50%,-50%);cursor:pointer;box-shadow:0 6px 18px rgba(34,80,120,0.12);transition:transform .14s cubic-bezier(.2,.9,.3,1), box-shadow .14s;will-change:transform;transform-origin:center center}
+.ornament:focus{outline:2px solid rgba(255,255,255,0.25)}
+.ornament:hover{transform:translate(-50%,-50%) scale(1.25);box-shadow:0 12px 26px rgba(34,110,170,0.18);animation:jiggle .42s cubic-bezier(.2,.9,.3,1)}
+
+.ornament::before{content:'';position:absolute;left:30%;top:20%;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.95);transform:scale(0);opacity:0;box-shadow:0 6px 14px rgba(255,255,255,0.6);transition:transform .16s ease,opacity .16s ease;pointer-events:none}
+.ornament:hover::before{transform:scale(1);opacity:1}
+
+/* subtle floating shadow pulse for hovered ornaments */
+.ornament::after{content:'';position:absolute;left:50%;top:50%;width:44px;height:44px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .18s}
+.ornament:hover::after{opacity:1}
+
+/* focus-visible for keyboard users */
+.ornament:focus-visible{box-shadow:0 10px 22px rgba(34,110,170,0.18);transform:translate(-50%,-50%) scale(1.18)}
+
+@keyframes jiggle{
+  0%{transform:translate(-50%,-50%) scale(1)}
+  30%{transform:translate(-50%,-50%) scale(1.18) rotate(-8deg)}
+  60%{transform:translate(-50%,-50%) scale(1.06) rotate(6deg)}
+  100%{transform:translate(-50%,-50%) scale(1.25) rotate(0deg)}
+}
+
+@keyframes twinkle{
+  0%{opacity:.6;transform:scale(.9)}
+  50%{opacity:1;transform:scale(1.05)}
+  100%{opacity:.6;transform:scale(.9)}
+}
+
+/* optional gentle continuous twinkle on gold ornaments */
+.ornament.gold{animation: none}
+.ornament.gold:hover{animation: jiggle .42s cubic-bezier(.2,.9,.3,1)}
+
+/* ornament variants */
+.ornament.gold{background:linear-gradient(180deg,#ffd86b,#ffcf55);border-color:rgba(255,220,120,0.9)}
+.ornament.red{background:linear-gradient(180deg,#ff6b6b,#d93b3b);border-color:rgba(255,140,140,0.9)}
+.ornament.blue{background:linear-gradient(180deg,#8ed7ff,#3fb3ff);border-color:rgba(140,210,255,0.9)}
+.ornament.silver{background:linear-gradient(180deg,#e9eef4,#c7d2db);border-color:rgba(220,230,240,0.95)}
+.ornament.green{background:linear-gradient(180deg,#7dd78a,#3fae53);border-color:rgba(140,220,160,0.9)}
+
+/* pulsing glow for some ornaments */
+.ornament.gold::after,.ornament.blue::after{content:'';position:absolute;left:50%;top:50%;width:60px;height:60px;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .18s}
+.ornament.gold:hover::after{background:radial-gradient(circle, rgba(255,214,120,0.28), rgba(255,214,120,0.04));opacity:1}
+.ornament.blue:hover::after{background:radial-gradient(circle, rgba(100,190,255,0.26), rgba(100,190,255,0.02));opacity:1}
+
+.preview{position:absolute;right:-20px;top:0;width:320px;padding:12px;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease}
+.preview img{width:100%;height:auto;border-radius:8px;display:block}
+.preview .caption{font-size:14px;color:var(--muted);text-align:center}
+.preview.show{opacity:1;pointer-events:none;transform:translateY(0)}
+
+.glass{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.45)}
+
+@media (max-width:860px){
+  .preview{position:static;width:100%;margin-top:12px}
+}
+
+/* Gift box styles */
+.gift{position:absolute;left:10%;top:72%;width:88px;height:88px;border-radius:12px;border:2px solid rgba(111,200,255,0.28);background:transparent;font-size:36px;cursor:pointer;box-shadow:0 10px 24px rgba(7,30,60,0.06);display:flex;align-items:center;justify-content:center;transform:translateZ(0);transition:transform .16s,box-shadow .16s}
+.gift:hover{transform:translateY(-8px) rotate(-6deg);box-shadow:0 26px 56px rgba(34,80,120,0.12)}
+.gift:active{transform:translateY(-3px) rotate(-2deg)}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;z-index:120;pointer-events:none;opacity:0;transition:opacity .18s}
+.modal .modal-inner{max-width:420px;width:100%;padding:18px;border-radius:12px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.modal.show{opacity:1;pointer-events:auto}
+.modal-close{position:absolute;right:28px;top:20px;background:transparent;border:0;font-size:18px;cursor:pointer}
+.gift-message{font-size:20px;color:var(--text);text-align:center;padding:6px 8px}
+
+@media (max-width:640px){
+  .gift{left:50%;top:86%;transform:translate(-50%,0)}
+}
+
+/* ribbon particle pieces */
+.ribbon-piece{position:fixed;width:10px;height:22px;border-radius:3px;pointer-events:none;z-index:130;opacity:0;transform-origin:center;will-change:transform,opacity}
+.ribbon-piece.color-1{background:linear-gradient(180deg,#ffd86b,#ffcf55)}
+.ribbon-piece.color-2{background:linear-gradient(180deg,#ff9aa2,#ff6b6b)}
+.ribbon-piece.color-3{background:linear-gradient(180deg,#8ed7ff,#3fb3ff)}
+.ribbon-piece.color-4{background:linear-gradient(180deg,#7dd78a,#3fae53)}
+
+@keyframes ribbon-fly{
+  0%{opacity:1;transform:translateY(0) rotate(0) scale(1)}
+  40%{transform:translateY(-80px) rotate(20deg) scale(1.05)}
+  100%{opacity:0;transform:translateY(-240px) rotate(120deg) scale(.9)}
+}
+
+/* Constellations scattered across page (not fixed)
+   Each `.constellation` is a compact SVG placed with inline `left`/`top` so it scrolls with the document. */
+.constellation{position:absolute;width:160px;height:120px;pointer-events:auto;opacity:.95;z-index:0;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.06));transition:transform .18s ease,opacity .18s}
+.constellation:hover{transform:scale(1.06);opacity:1}
+.constellation g circle{fill:rgba(255,255,255,0.95);opacity:.95}
+.constellation polyline{stroke:rgba(140,200,255,0.7);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+.constellation[data-name="Orion"] polyline{stroke:#ffd86b}
+.constellation g circle{filter:blur(0.2px)}
+
+@keyframes star-twinkle{
+  0%{opacity:.6;transform:scale(.96)}
+  50%{opacity:1;transform:scale(1.03)}
+  100%{opacity:.6;transform:scale(.96)}
+}
+
+/* small responsive tweak so constellations don't overlap controls on narrow screens */
+@media (max-width:760px){
+  .constellation{width:120px;height:90px}
+}
+
+/* Specific adjustments for Orion to avoid overlapping main text */
+.constellation[data-name="Orion"]{
+  /* ensure Orion sits lower on the page than hero text */
+  top:360px !important;
+  left:42% !important;
+  width:200px; height:160px;
+  z-index:0;
+}
+
+@media (max-width:760px){
+  .constellation[data-name="Orion"]{
+    top:520px !important;
+    left:50% !important;
+    transform:translateX(-50%);
+    width:160px; height:120px;
+  }
+}
+
+/* Specific styling for the Orion instance inside the tree area */
+.orion-in-tree{pointer-events:none;opacity:0.98;filter:drop-shadow(0 8px 20px rgba(80,150,220,0.08));}
+.orion-in-tree circle{mix-blend-mode:screen}
+
+/* Starfield inside tree area */
+.starfield{position:absolute;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0%,#bde9ff 40%,rgba(189,233,255,0) 70%);box-shadow:0 0 8px rgba(180,220,255,0.6);opacity:0.95;transform:translate(-50%,-50%);will-change:opacity,transform}
+.star::after{content:'';position:absolute;left:50%;top:50%;width:120%;height:120%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.6),transparent 30%);opacity:0.6}
+
+@keyframes twinkle{
+  0%{opacity:0.5;transform:translate(-50%,-50%) scale(0.9)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}
+  100%{opacity:0.5;transform:translate(-50%,-50%) scale(0.9)}
+}
+.star{animation-name:twinkle;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+
+/* Reduce visual weight on small screens */
+@media (max-width:760px){
+  .star{box-shadow:0 0 6px rgba(180,220,255,0.5)}
+}
+
+/* Constellation info label */
+.constellation-label{position:fixed;left:0;top:0;transform:translate(-50%,-120%);min-width:200px;max-width:320px;padding:10px 14px;border-radius:10px;background:linear-gradient(180deg,rgba(6,18,26,0.92),rgba(8,40,60,0.86));color:#e6f7ff;font-size:14px;box-shadow:0 10px 30px rgba(4,18,34,0.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);pointer-events:none;opacity:0;transition:opacity .16s,transform .16s;z-index:140}
+.constellation-label.show{opacity:1;pointer-events:auto}
+.constellation-label .name{font-weight:700;margin-bottom:6px}
+.constellation-label .desc{font-size:13px;color:rgba(230,247,255,0.9)}
+
+@media (max-width:640px){
+  .constellation-label{position:fixed;left:50%;transform:translate(-50%,0);bottom:18px;top:auto;max-width:88%;}
+}
